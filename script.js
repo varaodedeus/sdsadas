@@ -13,7 +13,10 @@ restart.addEventListener("click", init);
 
 function init() {
     boardState.fill(null);
-    cells.forEach(cell => cell.textContent = "");
+    cells.forEach(cell => {
+        cell.textContent = "";
+        cell.style.background = "rgba(255,255,255,0.2)";
+    });
     message.textContent = "";
 }
 
@@ -34,7 +37,10 @@ function makeMove(index, player) {
     const winner = checkWinner(boardState);
     if (winner) {
         if (winner === "tie") message.textContent = "Empate!";
-        else message.textContent = winner + " ganhou!";
+        else {
+            message.textContent = winner + " ganhou!";
+            highlightWinner(winner);
+        }
     }
 }
 
@@ -48,6 +54,23 @@ function checkWinner(bd) {
         if (bd[a] && bd[a] === bd[b] && bd[a] === bd[c]) return bd[a];
     }
     return bd.includes(null) ? null : "tie";
+}
+
+// destaque animado
+function highlightWinner(player) {
+    const combos = [
+        [0,1,2],[3,4,5],[6,7,8],
+        [0,3,6],[1,4,7],[2,5,8],
+        [0,4,8],[2,4,6]
+    ];
+    for (const [a,b,c] of combos) {
+        if (boardState[a] === player && boardState[b] === player && boardState[c] === player) {
+            [a,b,c].forEach(i => {
+                cells[i].style.background = "rgba(255,255,255,0.7)";
+                cells[i].style.transform = "scale(1.2)";
+            });
+        }
+    }
 }
 
 // Minimax Algorithm
