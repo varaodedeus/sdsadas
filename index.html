@@ -2,24 +2,27 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Jogo da Velha Imbatível</title>
+    <title>Gerador de Key</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Jogo da Velha 🎮</h1>
-    <div id="board" class="board">
-        <div class="cell" data-index="0"></div>
-        <div class="cell" data-index="1"></div>
-        <div class="cell" data-index="2"></div>
-        <div class="cell" data-index="3"></div>
-        <div class="cell" data-index="4"></div>
-        <div class="cell" data-index="5"></div>
-        <div class="cell" data-index="6"></div>
-        <div class="cell" data-index="7"></div>
-        <div class="cell" data-index="8"></div>
+    <h1>Gerador de Key</h1>
+
+    <div class="form-container">
+        <label for="username">Nome:</label>
+        <input type="text" id="username" placeholder="Digite seu nome">
+
+        <label for="hwid">HWID:</label>
+        <input type="text" id="hwid" placeholder="Digite sua HWID">
+
+        <label for="key">Chave:</label>
+        <input type="text" id="key" placeholder="Digite sua chave">
+
+        <button id="generate">Gerar Raw</button>
     </div>
-    <p id="message"></p>
-    <button id="restart">Reiniciar</button>
+
+    <h2>Resultado:</h2>
+    <textarea id="output" readonly placeholder="Aqui aparecerá sua raw"></textarea>
 
     <script src="script.js"></script>
 </body>
